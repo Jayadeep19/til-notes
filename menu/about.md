@@ -1,19 +1,25 @@
 ---
 layout: page
-title: Welcome to Lagrange!
+title: Welcome to my learning blog posts!
 permalink: /about
 ---
 
-Lagrange is a minimalist Jekyll theme. The purpose of this theme is to provide a simple, clean, content-focused blogging platform for your personal site or blog. Below you can find everything you need to get started.
+Hey! I'm Jayadeep; I have recently finished my master's. I am enthusiastic about working with data, specifically data science and MLOps. I like to build models and E2E pipelines to understand the data better and find hidden patterns. I got the first exposure to this ever-growing field during my master's, where I got the opportunity to learn about image processing. As a student with a mechanical background, I was genuinely interested and wanted to explore more in depth. I have taken several other subjects related to computer vision and deep learning during my master's. I started doing projects and internships related to the application of machine learning concepts in production, combining both my knowledge in the mechanical and machine learning fields. By the time I finished my master's, I was more oriented towards data science and MLOps, having completed several certification courses and bootcamps. 
 
-### Getting Started
+Right now, I am actively applying for a job in the fields mentioned above. Knowing this is an actively developing field, it is important to keep myself updated on the latest developments. Recently, I have started learning cloud services using Amazon Web Services (AWS). So, I intend to use this blogging platform to document everything I learn every day. Also, hopefully, someone reading these blogs could learn a thing or two.
 
-[Getting Started]({{ site.github.url }}{% post_url 2015-10-10-getting-started %}): getting started with installing Lagrange, whether you are completely new to using Jekyll, or simply just migrating to a new Jekyll theme.
+### About the blogs
 
-### Example Content
+Topics I will be focusing on learning and documenting in these blogs are:
+1. AI
+2. Database Management systems (SQL)
+3. Visualisation tools such as powerBI, Grafana
+4. Python (Mostly focused on libraries for Datascience, AI)
+5. Machine Learning Operations (MLOP's)
+6. Cloud Management tools mostly AWS
+7. Also, some interesting topics that I learned while doing my projects. 
 
-[Text and Formatting]({{ site.github.url }}{% post_url 2014-01-01-text-formatting-examples %})
+These are not ordered or prioritised in any order. However, you can expect a pattern that each blog matures as I build on the previous blogs.
 
-### Questions?
 
-This theme is completely free and open source software. You may use it however you want, as it is distributed under the [MIT License](http://choosealicense.com/licenses/mit/). If you are having any problems, any questions or suggestions, feel free to [tweet at me](https://twitter.com/intent/tweet?text=My%question%about%Lagrange%is:%&amp;via=paululele), or [file a GitHub issue](https://github.com/lenpaul/lagrange/issues/new).
+
