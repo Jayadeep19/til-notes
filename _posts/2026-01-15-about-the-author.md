@@ -4,7 +4,7 @@ title: "Linear algebra basics"
 author: "Jayadeep"
 categories: journal
 tags: [documentation,linear algebra, January26]
-image: 
+image: vectorbasis.PNG
 ---
 
 In the past couple of weeks, I decided to give my math skills a vist. Namely, Linear Algebra and calculus. These branches of Math are crucial for several fields of Engineering such as Computer vision, Image processing, Ml, AI to name some. Although I will be diving deep into statistics from tommorrow (I got a very nice book called "I'll tell you in the next blogs"). I would like to write a few blogs about the basic and imortant concepts that I studied(again!!) in the past 10-12 days. Starting with the good old Linear Algebra.
@@ -66,6 +66,8 @@ e_2 = (0,1...0), \\
 e_n = (0,0...1),
 $$
 - The set of scalars (Real or complex numbers) used to scale the vectors in this vector space are called as **Field** for the vector space. The properties(eg: dimensions) of the vector space depends on the Field
+- An examlple of vector addition:
+- ![vecaddition]({{"/assets/img/algebra/vecaddition.PNG" | relative_url"}})
 
 
      

@@ -4,7 +4,7 @@ title: "Linear algebra basics(dot product)"
 author: "Jayadeep"
 categories: journal
 tags: [documentation,linear algebra, January26]
-image: dotpro_orthonormal.PNG
+image: dotpro.PNG
 ---
 In this blog I would like write about the dot product between vectors. It is also called as **scalar product**.
 - Dot product is very important concept in linear algebra, it helps determining the length and angle between the vectors.
@@ -44,6 +44,6 @@ $$
 - This presents an interesting formula to find the dot product b/w two vectors
     - Say $\vec{u} = u_1e_1+ u_2e_2 + u_3e_3$ and $\vec{v}= v_1e_1+ v_2e_2 + v_3e_3$
     - Then $u \cdot v$ is given by:
-    ![orthonormal]({{/til-notes/}}/assets/img/dotpro_orthonormal.PNG)
+    ![orthonormal]({{/assets/img/algebra/dotpro_orthonormal.PNG | relative_url}})
     
 
