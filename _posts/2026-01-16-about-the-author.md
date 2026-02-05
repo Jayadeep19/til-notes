@@ -4,7 +4,7 @@ title: "Linear algebra basics(dot product)"
 author: "Jayadeep"
 categories: journal
 tags: [documentation,linear algebra, January26]
-image: dotpro_orthonormal.jpg
+image: dotpro_orthonormal.PNG
 ---
 In this blog I would like write about the dot product between vectors. It is also called as **scalar product**.
 - Dot product is very important concept in linear algebra, it helps determining the length and angle between the vectors.
