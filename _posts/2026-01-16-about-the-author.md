@@ -44,5 +44,5 @@ $$
 - This presents an interesting formula to find the dot product b/w two vectors
     - Say $\vec{u} = u_1e_1+ u_2e_2 + u_3e_3$ and $\vec{v}= v_1e_1+ v_2e_2 + v_3e_3$
     - Then $u \cdot v$ is given by:
-    ![orthonormal](../assets/img/algebra/dotpro_orthonormal.PNG)
+    ![orthonormal](../assets/img/dotpro_orthonormal.PNG)
 
