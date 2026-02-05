@@ -29,7 +29,7 @@ A unit vector can be produced from a non zero vector. This process is called as 
 - This is an useful concept to just preserve the information on the direction of the vector. \\
 
 3. One more area where the dot product is very useful is when we try to project a vector u onto another vector v. Also called as **Orthogonal projection**.
-- ![projection](../assets/img/algebra/projection.PNG)
+- ![projection](/assets/img/algebra/projection.PNG)
 
 4. Dot product in orthonormal basis:\\
 
@@ -44,6 +44,6 @@ $$
 - This presents an interesting formula to find the dot product b/w two vectors
     - Say $\vec{u} = u_1e_1+ u_2e_2 + u_3e_3$ and $\vec{v}= v_1e_1+ v_2e_2 + v_3e_3$
     - Then $u \cdot v$ is given by:
-    ![orthonormal]({{ site.github.url }}../assets/img/dotpro_orthonormal.PNG)
+    ![orthonormal]({{/til-notes}}../assets/img/dotpro_orthonormal.PNG)
     
 
