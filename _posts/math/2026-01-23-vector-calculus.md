@@ -2,7 +2,7 @@
 layout: post
 title: "Vector calculus"
 author: "Jayadeep"
-categories: journal
+categories: math
 tags: [documentation,vector calculus,Jacobian, Hessian, Chain rule, Gradients, Directional Derivatives,January26]
 image:
 ---
