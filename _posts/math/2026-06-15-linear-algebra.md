@@ -3,7 +3,7 @@ layout: post
 title: "Linear algebra basics"
 author: "Jayadeep"
 categories: math
-tags: [documentation,linear algebra, January26]
+tags: [documentation,linear algebra, June26]
 image: algebra/vectorbasis.PNG
 ---
 

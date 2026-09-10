@@ -3,7 +3,7 @@ layout: post
 title: "Statistics: Exploratory data analysis"
 author: "Jayadeep"
 categories: [math, datascience]
-tags: [documentation,Feb26]
+tags: [documentation,July26]
 image:
 ---
 

@@ -3,11 +3,11 @@ layout: post
 title: "Statistics: Data and Sampling Distributions"
 author: "Jayadeep"
 categories: [math, datascience]
-tags: [documentation,Feb26]
+tags: [documentation,July26]
 image:
 ---
 
-Today I learned about Sampling and their distributions. When There is huge dataset with unknown distribution, we do not have a good idea what to expect in the patterns in the data. We then take some samples(a subset of the dataset) and make inferences about the true dataset. The true dataset is called as Population and the sample of a population can be represented by $N(n)$.
+Today I touched Sampling and their distributions. When There is huge dataset with unknown distribution, we do not have a good idea what to expect of the patterns in the data. We then take some samples(a subset of the dataset) and make inferences about the true dataset. The true dataset is called as Population and the sample of a population can be represented by $N(n)$.
 - Sometimes quality is better than quantity. Smaller samples give better description about the data that the population itself. This is one of the reason why a better sampling is required.
 
 Todays topics:
@@ -58,7 +58,7 @@ Todays topics:
 - But, the problem is we do not have to take several thousands of samples to estimate the sampling distribution. We can take one sample and then we can try to estimate 'Standard Error' for a sample and scatter it to remaining samples.
 - Because, the shape of the curve is 'bell curve', we need two inputs for the normal distribution estimation. The mean and the standard deviation. This standard deviation is here called as 'Standard Error'
 - Standard Error is a single metric to measure the variability of sampling distribution.
-- It is given by $SE = \frac{s}{\sqrt{n}}$ ; s = [standard deviation]({% post_url 2026-02-01-statistics1 %}#Estimates of Variability:)
+- It is given by $SE = \frac{s}{\sqrt{n}}$ ; s = [standard deviation]({% post_url 2026-07-01-statistics1 %}#Estimates of Variability:)
 - From the above equation, we can deduce that that:
     - As the sample size(n) increases, the Standard error decreases.
     - This relation ship btwn SE and Sample size is reffered to as 'Square root of n' rule.
