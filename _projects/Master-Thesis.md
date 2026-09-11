@@ -7,7 +7,9 @@ image:
 
 - In Industry 4.0, collaborative robots (cobots) cannot rely on the rigid, hardcoded coordinates of traditional pick-and-place systems. To safely work alongside humans, cobots must perceive their environment, adapt to unstructured setups, and make real-time decisions. My *Master thesis*, **Optimal Grasping Strategy for Work-tool Handover by Cobots**, bridges the gap between static automation and dynamic human-robot collaboration by developing an end-to-end AI vision pipeline for autonomous tool retrieval.
 
-- my research uses a model-free, data-driven pipeline integrating multiple AI models to compute stable grasp orientations entirely from visual input.
+- Computing grasps for each tool using traditional maths and mechanics are very difficult and often yeilds not very good results, my research uses a model-free, data-driven pipeline integrating multiple AI models to compute stable grasp orientations entirely from visual input.
+
+- The grasps are generated in the form of rectangles called grasp rectangles, these rectangles determine the pose and position that the robot need to perform in order to successfully pick up the tool from the work bench.
 
 ## Hardware stack used:
 - Manipulator : Universal Robot 5(UR5 e-series)
@@ -25,7 +27,7 @@ image:
 - Grasp Synthesis
 - Coordinate Transformation
 
-## Perception Pipeline fro Pixels to Poses:
+## Perception Pipeline for Pixels to Poses:
 - The pipeline can be better illustrated by a diagram
 - ![Approach]({{"/assets/img/projects/thesis/Approach.PNG" | relative_url}}){: style="max-width: 70%;"}
 
@@ -64,6 +66,7 @@ image:
     $$
     - A correct grasp is defined as a grasp with more than 25\% IOU to the ground truth.
 - several GGCNN's were trained with different batch sizes for comparision. Based on the IOU loss, train loss and validation loss. A batch size of 16 suited the data better.
+- ![successful-grasp]({{"/assets/img/projects/thesis/successful grasps.PNG" | relative_url}}){: style="max-width: 45%;"}
 
 ### step 4: Coordinate transformation:
 - The output of the GGCNN is then transformed back to the Original image space for coordinate transformation.
@@ -71,7 +74,8 @@ image:
 - Using Kabsch Algorithm, correlation between the camera and the robot is established. 
 - Using a point cloud the depth information can be extracted and used to find the translation and rotation matrices.
 - Once both the rotation and translation matrices are calculated these are then stores as binary files and can be used during the real time inferance.
+- ![coordinate-transformation]({{"/assets/img/projects/thesis/GGCNN-grasp.PNG" | relative_url}})
 
 ## Implementation:
 - The whole pipeline is written in python and the Flow of the image can be visualised by the following image.
-- ![Implementation]({{"/assets/img/projects/thesis/implementation.png" | relative_url}})
+- ![Implementation]({{"/assets/img/projects/thesis/implementation.png" | relative_url}}){: style="max-width: 130%;"}
