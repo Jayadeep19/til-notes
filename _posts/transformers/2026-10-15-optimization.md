@@ -27,7 +27,7 @@ In this blog I explained the optimization techniques that are developed for an e
 
 ## BottleNecks in transformers:
 - There are two important types of **memories in a GPU**:
-    1. High Bandwidt Memory (HBM): This is big memory but is slower. It is where the model weights, KV vectors from the previous tokens are stored.
+    1. High Bandwidth Memory (HBM): This is big memory but is slower. It is where the model weights, KV vectors from the previous tokens are stored.
     2. SRAM (Static Random-Access Memory): The actual memory that sits on the chip itslef, where the actual computations carries on.
 - Since this SRAM is small, during the computation the required vector, matrices, weight are carried into the SRAM temporarily, they stay there untill the operation is performed.
 - The problem here during the transformer training and inference is pretty obvious here. 
@@ -72,7 +72,7 @@ O = P @ V      (HBM read, HBM write)
 - A page table maps logical positions to physical blocks. Lets us share KV across parallel samples.
 > example: (KV cache vs Paged attention)
 > - Imagine there is an appartment (our memory) and the customers who wants to buy the flats are our tokens.
-> - Normal CVCache asks each customer to book the whole flat even when they only want 1 or 2 rooms. This causes unused spaces(memory in our case).
+> - Normal KVCache asks each customer to book the whole flat even when they only want 1 or 2 rooms. This causes unused spaces(memory in our case).
 > - Paged Attention lets the customer choose any particular room randomly anywhere in the appartment. We keep a track of these booking via a register (page table).
 > - In special cases, it can even let you share the booked room between different customers. For instance, if they are relatives or friends.
 
@@ -90,7 +90,7 @@ O = P @ V      (HBM read, HBM write)
 - But in order to dicuss those, first we need to discuss Multi Head attention (MHA)
 
 #### Multi Head Attention (MHA):
-- Remember the [Scaled dot product attention]({% post_url 2026-09-24-transformers %}#scaled dot product attention), it is a big matrix multiplication that can be done parallely in a gpu.
+- Remember the [Scaled dot product attention]({% post_url 2026-09-24-transformers %}#scaled-dot-product-attention), it is a big matrix multiplication that can be done parallely in a gpu.
 - However, we can use Multi Head attention to basically split the matmul into smaller chunks and through different heads.
 - In MHA we work in the subspace of the number of heads, meaning for the same computation the context becomes enriched compare to a single big matrix multiplication, especially when the input sequence is long. 
 - ![MHA]({{"/assets/img/transformers/MHA.PNG" | relative_url}})
