@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Back propagation in Neural Networks"
+title: "Back propagation and Neural Networks"
 author: "Jayadeep"
 categories: [DL, NN]
 tags: [documentation,back propagation]
 image:
 ---
 
-I am working on documenting my [pytorch skills](https://github.com/Jayadeep19/pytorch) from basics to some small projects ultimately working with transformers and LLM's. In the process, an important functionality of pytorch is **Autograd**. In order to explain this functionality we have to discuss how neural networks learn. So, I thought it would be a nice idea to write a blog on how Back Propagation works in Neural Networks
+I am working on documenting my [pytorch skills](https://github.com/Jayadeep19/pytorch){:target="_blank"} from basics to some small projects ultimately working with transformers and LLM's. In the process, an important functionality of pytorch is **Autograd**. In order to explain this functionality we have to discuss how neural networks learn. So, I thought it would be a nice idea to write a blog on how Back Propagation works in Neural Networks
 
 Todays topics:
 * TOC
@@ -61,9 +61,10 @@ Todays topics:
 - We have thousands of weights and biases how to effectively find the right set of combinations to mimimize the cost function? One answer is to sit down and try all the combinations manually (Horrifying).
 - The other one is to use **gradient descent**
 - Gradient meaning the difference between two points, and descent is climbing down. 
+    > (Also see my other blog on [vector fields and gradients]({% post_url /math/2026-06-23-vector-calculus %}/#Vector fields and Gradients:){:target="_blank"})
 - as we have discussed, cost of a model is a function. Every function has minima for the given parameters. Our goal here is to find the minima of the cost function (reducing the error).
 - Aka, we follow the direction of the greatest steep (greatest downward slope)
-- Now we have a function and a goal (minima), how do we achieve it? from differentiation, we know that when we differentiate a function and equate it to zero to find the minima - [differentiation]({% post_url /math/2026-06-20-calculus1 %}/#geometric-meaning)
+- Now we have a function and a goal (minima), how do we achieve it? from differentiation, we know that when we differentiate a function and equate it to zero to find the minima - [differentiation]({% post_url /math/2026-06-20-calculus1 %}/#geometric-meaning){:target="_blank"}
 - <div style="display: flex; gap: 10px;">
   <img src="{{'/assets/img/NN/gd1.PNG' | relative_url}}" alt="2D function" style="width: 50%;">
   <img src="{{'/assets/img/NN/gd2.PNG' | relative_url}}" alt="Higher dimension function" style="width: 50%;">
@@ -98,7 +99,7 @@ Todays topics:
 - Coming to our last layer, we want to know that changes occur in the cost function when we tweak the parameters $(w^L, a^{L-1} and b^L)$
 - $\frac{\partial{C_0}}{\partial{w^L}}$
 - ![bp6]({{"/assets/img/NN/bp6.PNG" | relative_url}})
-- Similarly we can find the partial derivatives for $[a^(L-1) and b^L]$
+- Similarly we can find the partial derivatives for $[a^{(L-1)} and b^L]$
 - But our simple NN has 4 layers, meaning we have to do this partial derivation for all the parameters for all layers. $(a^1 ...a^L), (b^1,....b^L)$. Now if we calculate all of them and put in a vector gives us the Gradient Vector .
 - If we have multiple neurons in our layer then we just have to take the sum of the cost function for all the output layer neurons and calculate the gradient vector.
   
@@ -119,3 +120,7 @@ Todays topics:
 - ![bp12]({{"/assets/img/NN/bp12.PNG" | relative_url}})
 - The gradient vector is $"\triangledown C"$
 - ![bp13]({{"/assets/img/NN/bp13.PNG" | relative_url}})
+
+
+## Links
+- [3blue1brown](https://www.3blue1brown.com/lessons/backpropagation/#what-is-backpropagation-really-doing){:target="_blank"}
