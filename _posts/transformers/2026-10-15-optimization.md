@@ -10,7 +10,7 @@ In this blog I explained the optimization techniques that are developed for an e
 * TOC
 {:toc}
 
-- A transformer with a 70B parameters avtivate all the parameters everytime for every token.
+- A transformer with a 70B parameters activate all the parameters everytime for every token.
 - This costs huge computation time and increases the cost. To mitigate this to an extent several optimization techniques are developed.
 
 ## Mixture of Experts (MoE):
@@ -28,14 +28,14 @@ In this blog I explained the optimization techniques that are developed for an e
 ## BottleNecks in transformers:
 - There are two important types of **memories in a GPU**:
     1. High Bandwidth Memory (HBM): This is big memory but is slower. It is where the model weights, KV vectors from the previous tokens are stored.
-    2. SRAM (Static Random-Access Memory): The actual memory that sits on the chip itslef, where the actual computations carries on.
-- Since this SRAM is small, during the computation the required vector, matrices, weight are carried into the SRAM temporarily, they stay there untill the operation is performed.
+    2. SRAM (Static Random-Access Memory): The actual memory that sits on the chip itself, where the actual computations carries on.
+- Since this SRAM is small, during the computation the required vector, matrices, weight are carried into the SRAM temporarily, they stay there until the operation is performed.
 - The problem here during the transformer training and inference is pretty obvious here. 
-    - Training is a parallel job as we have seen, it is a big matrix multiplication which can be performed parallely. It is also FLOP (Floating point operation)-bound. Meaning it iis bound by the amount of computation a GPU can perform.
+    - Training is a parallel job as we have seen, it is a big matrix multiplication which can be performed parallelly. It is also FLOP (Floating point operation)-bound. Meaning it is bound by the amount of computation a GPU can perform.
     - While Inference is a serial job and is memory bound. Why?
-        - As in the memory heriarichy, the required weights, vectors has to be carried to the SRAM everytime a work has to be predicted. The actual calculation on the SRAAM is very fast however, the core waits most of the time that it actually performs the calculation.
+        - As in the memory hierarchy, the required weights, vectors has to be carried to the SRAM everytime a work has to be predicted. The actual calculation on the SRAAM is very fast however, the core waits most of the time that it actually performs the calculation.
 - The Naive Auto regressor decoder does $$O(N^2)$$ operations to generate N-tokens. Meaning, to generate 4 tokens it performs 16 attention operations (Remember Scaled Dot product!!)
-- On top of this decored computations, the attention itself moves a lot of data to and from HBM. This could easily make attention calculation memory bound way before compute bound.
+- On top of this decoder computations, the attention itself moves a lot of data to and from HBM. This could easily make attention calculation memory bound way before compute bound.
 
 -  Fortunately, several optimization techniques are proposed during the years to offset these bottle necks. They are:
 1. Flash attention
@@ -55,7 +55,7 @@ O = P @ V      (HBM read, HBM write)
 - From the second tile onward, the result of the previous V matrix multiplication is retrieved from HBM, scaled appropriately, and the result of the current tile’s V matrix multiplication is added to it.
 - As it can be seen that the trips to HBM is reduced to two reads and a write.
 - Softmax distribution is calculated once all the values are available, but if we tile the Q,K vectors how do we compute the softmax distribution? It is achieved with something called **Online softmax**
-- It keeps a running maximum and ,updating them incrementally as new blocks arrive. This avoinds forming the full N*N matrix on the SRAM.
+- It keeps a running maximum and ,updating them incrementally as new blocks arrive. This avoids forming the full N*N matrix on the SRAM.
 - All operations happen in a single GPU kernel with no intermediate writes to HBM. This is called as **Fused Kernels**
 
 ## KV Cache:
@@ -71,9 +71,9 @@ O = P @ V      (HBM read, HBM write)
 - This unused memory sits idle and is wasted, to fix this **Paged attention** allocates a 16 batch token blocks worth of memory randomly.
 - A page table maps logical positions to physical blocks. Lets us share KV across parallel samples.
 > example: (KV cache vs Paged attention)
-> - Imagine there is an appartment (our memory) and the customers who wants to buy the flats are our tokens.
+> - Imagine there is an apartment (our memory) and the customers who wants to buy the flats are our tokens.
 > - Normal KVCache asks each customer to book the whole flat even when they only want 1 or 2 rooms. This causes unused spaces(memory in our case).
-> - Paged Attention lets the customer choose any particular room randomly anywhere in the appartment. We keep a track of these booking via a register (page table).
+> - Paged Attention lets the customer choose any particular room randomly anywhere in the apartment. We keep a track of these booking via a register (page table).
 > - In special cases, it can even let you share the booked room between different customers. For instance, if they are relatives or friends.
 
 ### Types of Attentions
@@ -87,16 +87,16 @@ O = P @ V      (HBM read, HBM write)
 ||Paged attention||
 
 - we have already seen Flash attention and Paged attention and since we are discussing about KV cache, I will write about the attentions that are closely related to kv cache.
-- But in order to dicuss those, first we need to discuss Multi Head attention (MHA)
+- But in order to discus those, first we need to discuss Multi Head attention (MHA)
 
 #### Multi Head Attention (MHA):
-- Remember the [Scaled dot product attention]({% post_url 2026-09-24-transformers %}#scaled-dot-product-attention), it is a big matrix multiplication that can be done parallely in a gpu.
+- Remember the [Scaled dot product attention]({% post_url 2026-09-24-transformers %}/#scaled-dot-product-attention), it is a big matrix multiplication that can be done parallelly in a gpu.
 - However, we can use Multi Head attention to basically split the matmul into smaller chunks and through different heads.
 - In MHA we work in the subspace of the number of heads, meaning for the same computation the context becomes enriched compare to a single big matrix multiplication, especially when the input sequence is long. 
 - ![MHA]({{"/assets/img/transformers/MHA.PNG" | relative_url}})
 - **Self attention vs cross attention**:
-    - Self attention when the input sequence is one and each tken attends to other token
-    - Cross attention is when there are two sequeces and tokens in one sequence attend to another sequence. Example translation
+    - Self attention when the input sequence is one and each token attends to other token
+    - Cross attention is when there are two sequences and tokens in one sequence attend to another sequence. Example translation
 
 #### Grouped Query Attention (MQA):
 - In multi head attention the K and V values are mostly redundant. meaning most of them repeats the same in each head.
@@ -117,7 +117,7 @@ O = P @ V      (HBM read, HBM write)
 
 #### Grouped Query Attention (GQA):
 - Instead of forcing all the queries to use the same key and value vectors, we make some heads share the same K,V while the other groups of heads share different K,V.
-- This set up lets the user to tweek the properties of the transformer in between MHA and MQA.
+- This set up lets the user to tweak the properties of the transformer in between MHA and MQA.
 - There is grouping hyper parameter "G", set this number to decide how many groups in the transformer.
 - Turn 'G' up and you force more heads into a single group achieving MQA characteristics, while tuning it down brings the character towards MHA
 - ![GQA]({{"/assets/img/transformers/GQA.PNG" | relative_url}})
