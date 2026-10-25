@@ -61,10 +61,11 @@ Todays topics:
 - We have thousands of weights and biases how to effectively find the right set of combinations to mimimize the cost function? One answer is to sit down and try all the combinations manually (Horrifying).
 - The other one is to use **gradient descent**
 - Gradient meaning the difference between two points, and descent is climbing down. 
-    > (Also see my other blog on [vector fields and gradients]({% post_url /_posts/math/2026-06-23-vector-calculus %}){:target="_blank"})
+    > (Also see my other blog on [vector fields and gradients]({% post_url /math/2026-06-23-vector-calculus %}){:target="_blank"})
 - as we have discussed, cost of a model is a function. Every function has minima for the given parameters. Our goal here is to find the minima of the cost function (reducing the error).
 - Aka, we follow the direction of the greatest steep (greatest downward slope)
-- Now we have a function and a goal (minima), how do we achieve it? from differentiation, we know that when we differentiate a function and equate it to zero to find the minima - [differentiation]({% post_url /math/2026-06-20-calculus1 %}/#geometric-meaning){:target="_blank"}
+- Now we have a function and a goal (minima), how do we achieve it? from differentiation, we know that when we differentiate a function and equate it to zero to find the minima
+    > check blog [geometric meaning]({% post_url /math/2026-06-20-calculus1 %}/#geometric-meaning){:target="_blank"}
 - <div style="display: flex; gap: 10px;">
   <img src="{{'/assets/img/NN/gd1.PNG' | relative_url}}" alt="2D function" style="width: 50%;">
   <img src="{{'/assets/img/NN/gd2.PNG' | relative_url}}" alt="Higher dimension function" style="width: 50%;">

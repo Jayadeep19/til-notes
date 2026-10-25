@@ -14,7 +14,7 @@ In this blog I explained the optimization techniques that are developed for an e
 - This costs huge computation time and increases the cost. To mitigate this to an extent several optimization techniques are developed.
 
 ## Mixture of Experts (MoE):
-- The idea is to activate only the relevant parameters instead of activating all the parameters. Example a 671B parameter MOE transformer only activtes 37B parameters per token. Making it faster than the 70B parameter transformer.
+- The idea is to activate only the relevant parameters instead of activating all the parameters. Example a 671B parameter MOE transformer only activates 37B parameters per token. Making it faster than the 70B parameter transformer.
 - MoE replaces each FFN with 'E' independent experts.
 - A **router** decides how many experts (k) to pick for activation per token.
     - Now the Total parameters = E * FFN_size
@@ -90,7 +90,7 @@ O = P @ V      (HBM read, HBM write)
 - But in order to discus those, first we need to discuss Multi Head attention (MHA)
 
 #### Multi Head Attention (MHA):
-- Remember the [Scaled dot product attention]({% post_url 2026-09-24-transformers %}/#scaled-dot-product-attention), it is a big matrix multiplication that can be done parallelly in a gpu.
+- Remember the [Scaled dot product attention]({% post_url /transformers/2026-09-24-transformers %}/#scaled-dot-product-attention), it is a big matrix multiplication that can be done parallelly in a gpu.
 - However, we can use Multi Head attention to basically split the matmul into smaller chunks and through different heads.
 - In MHA we work in the subspace of the number of heads, meaning for the same computation the context becomes enriched compare to a single big matrix multiplication, especially when the input sequence is long. 
 - ![MHA]({{"/assets/img/transformers/MHA.PNG" | relative_url}})
