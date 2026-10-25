@@ -90,7 +90,7 @@ O = P @ V      (HBM read, HBM write)
 - But in order to discus those, first we need to discuss Multi Head attention (MHA)
 
 #### Multi Head Attention (MHA):
-- Remember the [Scaled dot product attention]({% post_url /transformers/2026-09-24-transformers %}/#scaled-dot-product-attention), it is a big matrix multiplication that can be done parallelly in a gpu.
+- Remember the [Scaled dot product attention]({{site.baseurl}}{% post_url /transformers/2026-09-24-transformers %}#scaled-dot-product-attention){:target="_blank"}, it is a big matrix multiplication that can be done parallelly in a gpu.
 - However, we can use Multi Head attention to basically split the matmul into smaller chunks and through different heads.
 - In MHA we work in the subspace of the number of heads, meaning for the same computation the context becomes enriched compare to a single big matrix multiplication, especially when the input sequence is long. 
 - ![MHA]({{"/assets/img/transformers/MHA.PNG" | relative_url}})
